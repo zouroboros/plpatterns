@@ -1,4 +1,4 @@
-fetch("http://example.org/api/endpoint")
+fetch("https://dummyjson.com/test")
     .then(function (response) {
         return response.json();
     })
