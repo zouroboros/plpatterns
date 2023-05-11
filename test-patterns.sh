@@ -3,12 +3,12 @@
 #! nix-shell -p nodejs-slim python3 gcc jdk
 #! nix-shell -I nixpkgs=channel:nixos-22.11
 
-for file in patterns/javascript/*/*.js; 
+for file in patterns/JavaScript/*/*.js; 
 do 
     node $file; 
 done
 
-for file in patterns/python/*/*.py; 
+for file in patterns/Python/*/*.py; 
 do 
     python3 $file; 
 done
