@@ -1,6 +1,6 @@
 #!/usr/bin/env nix-shell 
 #! nix-shell -i bash --pure
-#! nix-shell -p nodejs-slim python3 gcc jdk
+#! nix-shell -p nodejs-slim python3 gcc jdk ghc
 #! nix-shell -I nixpkgs=channel:nixos-22.11
 
 for file in patterns/JavaScript/*/*.js; 
@@ -24,4 +24,12 @@ for file in patterns/Java/*/*.java;
 do 
     javac $file -d .build; 
 done
+rm -rf .build
+
+mkdir .build
+for file in patterns/Haskell/*/*.hs; 
+do 
+    ghc -odir .build -hidir .build -S -o .build/haskell $file; 
+done
+
 rm -rf .build
