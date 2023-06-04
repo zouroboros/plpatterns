@@ -22,7 +22,8 @@ rm -rf .build
 
 for file in patterns/Java/*/*.java; 
 do 
-    javac $file -d .build; 
+    folder="$(dirname "$file")"
+    javac $file --source-path $folder -d .build; 
 done
 rm -rf .build
 
