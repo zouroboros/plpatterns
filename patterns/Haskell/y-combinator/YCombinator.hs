@@ -1,0 +1,3 @@
+module YCombinator
+
+y = \f -> (\x -> f (x x)) (\x -> f (x x))

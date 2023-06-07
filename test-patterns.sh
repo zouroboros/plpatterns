@@ -30,7 +30,10 @@ rm -rf .build
 mkdir .build
 for file in patterns/Haskell/*/*.hs; 
 do 
-    ghc -odir .build -hidir .build -S -o .build/haskell $file; 
+    if [[ ! "$file" =~ ^"patterns/Haskell/y-combinator/" ]];
+    then
+        ghc -odir .build -hidir .build -S -o .build/haskell $file;
+    fi
 done
 
 rm -rf .build
