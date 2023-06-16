@@ -5,7 +5,7 @@
 
 for file in patterns/JavaScript/*/*.js; 
 do 
-    node $file; 
+    node $file;
 done
 
 for file in patterns/Python/*/*.py; 
