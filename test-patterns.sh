@@ -32,7 +32,15 @@ for file in patterns/Haskell/*/*.hs;
 do 
     if [[ ! "$file" =~ ^"patterns/Haskell/y-combinator/" ]];
     then
-        ghc -odir .build -hidir .build -S -o .build/haskell $file;
+        folder="./$(dirname "$file")"
+        fileName="$(basename "$file")"
+        fileNameWithOutExtension="${fileName%.*}"
+        cd $folder
+        ghc --make $fileName;
+        rm *.hi
+        rm *.o
+        rm -f $fileNameWithOutExtension
+        cd "../../../"
     fi
 done
 
