@@ -26,13 +26,13 @@ next levels = foldl (\cont -> \level -> foldr (\node -> breadthFirstKidney' node
 -- this simulates essentially a functional queue
 
 breadthFirstTwoLists :: Tree v -> [v]
-breadthFirstTwoLists tree = breadthFirstTwoList' [tree] []
+breadthFirstTwoLists tree = breadthFirstTwoLists' [tree] []
 
-breadthFirstTwoList' :: [Tree v] -> [[Tree v]] -> [v]
-breadthFirstTwoList' [] [] = []
-breadthFirstTwoList' [] nextLevel = breadthFirstTwoList' 
+breadthFirstTwoLists' :: [Tree v] -> [[Tree v]] -> [v]
+breadthFirstTwoLists' [] [] = []
+breadthFirstTwoLists' [] nextLevel = breadthFirstTwoLists' 
     (foldl (\accum -> \level -> foldr (\node -> \accum -> node:accum) accum level) [] nextLevel) []
-breadthFirstTwoList' (node:nodes) nextLevel = value node : breadthFirstTwoList' nodes (children node:nextLevel)
+breadthFirstTwoLists' (node:nodes) nextLevel = value node : breadthFirstTwoLists' nodes (children node:nextLevel)
 
 -- from Allison, Lloyd. 2006. “Circular Programs and Self-Referential Structures.”
 breadthFirstAllison :: Tree v -> [v]
