@@ -6,7 +6,7 @@ public class Application {
         var horse = new Horse("Tommy", "Mustang", "brown");
         var animals = List.of(cat, horse);
 
-        var animalWriter = new InstanceOfConsoleWriter();
+        var animalWriter = new SimpleConsoleWriter();
         var animalVisitor = new ConsoleWriter();
         
         animals.stream().forEach(animal -> animal.save(animalWriter));
