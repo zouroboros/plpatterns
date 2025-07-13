@@ -1,7 +1,7 @@
 #!/usr/bin/env nix-shell 
 #! nix-shell -i bash --pure
-#! nix-shell -p nodejs-slim python3 gcc jdk ghc
-#! nix-shell -I nixpkgs=channel:nixos-22.11
+#! nix-shell -p nodejs-slim python3 gcc jdk ghc dotnet-sdk
+#! nix-shell -I nixpkgs=channel:nixos-25.05
 
 for file in patterns/JavaScript/*/*.js; 
 do 
@@ -45,3 +45,11 @@ do
 done
 
 rm -rf .build
+
+for file in patterns/CSharp/*/*.csproj; 
+do 
+    folder="$(dirname "$file")"
+    dotnet run --project $file
+    rm -rf $folder/bin
+    rm -rf $folder/obj 
+done
